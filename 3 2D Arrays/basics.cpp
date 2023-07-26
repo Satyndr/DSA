@@ -13,6 +13,7 @@ int main(){
             cin>>box[i][j];
         }
     }
+    //i have changed this :)
 
     //printing 2d array
     for(int i=0;i<3;i++){
