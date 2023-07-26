@@ -1,0 +1,3 @@
+/*There are aggresive cows 
+we have to place cows in stalls so that they do not fight
+we have to fing maximum distance between stalls of cows*/
