@@ -13,6 +13,7 @@ bool isPresent(int arr[][4],int key,int row,int col){
 
     return 0;
 }
+//changes
 
 int rowSum(int arr[][4],int row,int col){
     
