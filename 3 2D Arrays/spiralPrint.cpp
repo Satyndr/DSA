@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void printSpiral(int arr[][3],int row,int col){
+void printSpiral(int arr[][4],int row,int col){
     
     //indexes
     int startingRow = 0;
@@ -30,14 +30,14 @@ void printSpiral(int arr[][3],int row,int col){
         endingCol--;
 
         //endingRow
-        for(int i=endingCol ; total<count && i>=startingCol ; i--){
+        for(int i=endingCol ; count<total && i>=startingCol ; i--){
             cout<<arr[endingRow][i]<<" ";
             count++;
         }
         endingRow--;
 
         //starting col
-        for(int i=endingRow ; total<count && i>=startingRow ; i--){
+        for(int i=endingRow ; count<total && i>=startingRow ; i--){
             cout<<arr[i][startingCol]<<" ";
             count++;
         }
@@ -48,9 +48,9 @@ void printSpiral(int arr[][3],int row,int col){
 
 int main(){
 
-    int arr1[3][3] = {{1,2,3},{8,9,4},{7,6,5}};
+    int arr1[4][4] = {1,2,3,4,12,13,14,5,11,16,15,6,10,9,8,7};
 
-    printSpiral(arr1,3,3);
+    printSpiral(arr1,4,4);
 
     return 0;
 }
