@@ -1,3 +1,4 @@
+//the array is sorted
 #include<iostream>
 
 using namespace std;
