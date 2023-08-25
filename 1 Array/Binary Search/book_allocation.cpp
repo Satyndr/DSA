@@ -3,7 +3,7 @@ suppose a array containing pages of books like{10,20,30,40}
 we have to distribute books to m=2 students
 conditions-
 -every book must be given
--each student shouid get at least one book
+-each student should get at least one book
 -book allocation should be in contigious manner
 */
 
