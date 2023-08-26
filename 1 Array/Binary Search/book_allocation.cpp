@@ -5,6 +5,7 @@ conditions-
 -every book must be given
 -each student should get at least one book
 -book allocation should be in contigious manner
+maximum number of pages assigned to a student is minimum
 */
 
 #include <iostream>
