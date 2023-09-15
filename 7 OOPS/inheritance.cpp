@@ -21,12 +21,14 @@ class human{
 };
 
 //creating inherited child class
-class male: public human{
+class male: public human{//single inheritance
 
     public:
     string color;
 
 };
+
+
 
 int main(){
 
