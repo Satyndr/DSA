@@ -68,7 +68,7 @@ void insertAtKey(node* &head, node* &tail, int value, int key){
 
 }
 
-void deleteAtPosition(node* &head,int key){
+void deleteAtPosition(node* &head, node* &tail, int key){
 
     if(key == 1){
         node* temp = head;
@@ -123,8 +123,8 @@ int main(){
     insertAtKey(head,tail,23,2);print(head);
     insertAtKey(head,tail,25,3);print(head);
 
-    deleteAtPosition(head,3);print(head);
-    deleteAtPosition(head,1);print(head);
+    deleteAtPosition(head,tail,3);print(head);
+    deleteAtPosition(head,tail,1);print(head);
 
 
     return 0;
