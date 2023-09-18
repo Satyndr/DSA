@@ -14,6 +14,14 @@ class node{
         this -> prev = NULL;
         this -> next = NULL;
     }
+
+
+    ~node(){
+        if(this->next != NULL){
+            delete next;
+            this->next = NULL;
+        }
+    }
 };
 
 //function to add element at beginning
@@ -36,6 +44,75 @@ void insertAtTail(node* &tail, int value){
     tail = temp;
 
 }
+
+//function to insert at key
+void insertAtKey(node* &head, node* tail, int key, int value){
+
+    if(head == NULL){
+        cout<<"Empty !";
+        return;
+    }
+
+    if(key==1){
+        insertAtHead(head, value);
+        return;
+    }
+
+    node* temp = head;
+    for(int i=1;i<key-1;i++){
+        temp = temp -> next;
+    }
+
+    if(temp -> next == NULL){
+        insertAtTail(tail, value);
+        return;
+    }
+
+    node* nodeToInsert = new node(value);
+
+    nodeToInsert -> next = temp -> next;
+    temp -> next -> prev = nodeToInsert;
+    temp -> next = nodeToInsert;
+    nodeToInsert -> prev = temp;
+
+}
+
+//function to delete at beginning
+void deleteAtHead(node* &head){
+
+    node* temp = head;
+    temp -> next -> prev = NULL;
+    head = temp -> next;
+    temp -> next = NULL;
+    delete temp;
+    
+}
+
+//delete at position
+void deleteAtKey(node* &head, node* &tail, int key){
+
+    if(key == 1){
+        node* temp = head;
+        temp -> next -> prev = NULL;
+        head = temp -> next;
+        temp -> next = NULL;
+        delete temp;
+    }
+    else{
+        node* current = head;
+        node* previous = NULL;
+
+        for(int i=1;i<key;i++){
+            previous = current;
+            current = current->next;
+        }
+        current -> next -> prev = previous;
+        previous -> next = current->next;
+        current -> next = NULL;
+        delete(current);
+    }
+}
+
 
 //function to get length of list
 int length(node* &head){
@@ -75,6 +152,12 @@ int main(){
     insertAtTail(tail,11);print(head);
     insertAtTail(tail,12);print(head);
 
+    insertAtKey(head,tail,3,13);print(head);
+    insertAtKey(head,tail,4,14);print(head);
+
+    deleteAtHead(head);print(head);
+
+    deleteAtKey(head,tail,2);print(head);
 
 
     return 0;

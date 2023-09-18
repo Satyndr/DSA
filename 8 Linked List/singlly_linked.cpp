@@ -52,7 +52,7 @@ void insertAtKey(node* &head, node* &tail, int value, int key){
     }
 
     node* temp = head;
-    for(int i=1;i<key;i++){
+    for(int i=1;i<key-1;i++){
         temp = temp->next;
     }
 
