@@ -93,7 +93,7 @@ void deleteAtPosition(node* &head, node* &tail, int key){
 
 
 //function to print Linked List
-void print(node* &head){
+void print(node* head){
 
     node* temp = head;
 
