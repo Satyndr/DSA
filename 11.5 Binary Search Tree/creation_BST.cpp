@@ -21,7 +21,7 @@ int main(){
     node* root = NULL;
 
     cout<<"Enter data to create BST: ";
-        
+         
 
     return 0;
 }
