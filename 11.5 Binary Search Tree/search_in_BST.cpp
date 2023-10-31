@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 class node{
@@ -78,65 +79,46 @@ void takeInput(node* &root){
 
 }
 
-node* findMin(node* root){
+bool searchInBST(node *root, int x) {
 
-    node* temp = root;
-
-    while (temp->left != NULL){
-        temp = temp -> left;
+    //base case
+    if (root == NULL ){
+        return false;
     }
-    return temp;
+    if( root->data == x){
+        return true;
+    }
+
+    if( x> root -> data){
+        searchInBST(root->right, x);
+    }
+    else {
+        searchInBST(root->left, x);
+    }
 
 }
 
-//deletion
-node* deleteNode(node* root, int x){
+//iterative way
+bool searchInBST(node *root, int x) {
 
-    if( root == NULL){
-        return root;
-    }
+    //iterative
+    node* temp = root;
 
-    //base case
-    if(root->data == x){
-        //0 child
-        if( root->left == NULL && root->right == NULL){
-            delete root;
-            return NULL;
+    while(temp!= NULL){
+
+        if(temp->data == x){
+            return true;
         }
 
-        //1 child
-
-        //left
-        if( root->left != NULL && root->right == NULL ){
-            node* temp = root -> left;
-            delete root;
-            return temp;
+        if(temp->data< x){
+            temp = temp->right;
         }
-        //right
-        if( root->left == NULL && root->right != NULL ){
-            node* temp = root -> right;
-            delete root;
-            return temp;
+        else{
+            temp = temp ->left;
         }
-
-        //2 child
-        if( root->left != NULL && root->right != NULL ){
-            int mini = findMin(root->right) -> data;
-            root->data = mini;
-            root->right = deleteNode(root->right, mini);
-            return root;
-        }
-
     }
 
-    else if( x < root->data){
-        root->left = deleteNode(root->left, x);
-        return root;
-    }
-    else {
-        root->right = deleteNode(root->right, x);
-        return root;
-    }
+    return false;
 
 }
 
@@ -150,15 +132,8 @@ int main(){
 
     LevelOrderTraversal(root);
 
-    cout<<endl;
-    root = deleteNode(root, 3);
-    LevelOrderTraversal(root);
-
-    root = deleteNode(root, 5);
-    LevelOrderTraversal(root);
-
-    root = deleteNode(root, 8);
-    LevelOrderTraversal(root);
+    cout<<searchInBST(root, 27)<<endl;
+    cout<<searchInBST(root, 9)<<endl;
 
     return 0;
 }

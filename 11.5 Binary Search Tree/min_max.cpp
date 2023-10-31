@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 class node{
@@ -89,54 +90,14 @@ node* findMin(node* root){
 
 }
 
-//deletion
-node* deleteNode(node* root, int x){
+node* findMax(node* root){
 
-    if( root == NULL){
-        return root;
+    node* temp = root;
+
+    while (temp->right != NULL){
+        temp = temp -> right;
     }
-
-    //base case
-    if(root->data == x){
-        //0 child
-        if( root->left == NULL && root->right == NULL){
-            delete root;
-            return NULL;
-        }
-
-        //1 child
-
-        //left
-        if( root->left != NULL && root->right == NULL ){
-            node* temp = root -> left;
-            delete root;
-            return temp;
-        }
-        //right
-        if( root->left == NULL && root->right != NULL ){
-            node* temp = root -> right;
-            delete root;
-            return temp;
-        }
-
-        //2 child
-        if( root->left != NULL && root->right != NULL ){
-            int mini = findMin(root->right) -> data;
-            root->data = mini;
-            root->right = deleteNode(root->right, mini);
-            return root;
-        }
-
-    }
-
-    else if( x < root->data){
-        root->left = deleteNode(root->left, x);
-        return root;
-    }
-    else {
-        root->right = deleteNode(root->right, x);
-        return root;
-    }
+    return temp;
 
 }
 
@@ -150,15 +111,8 @@ int main(){
 
     LevelOrderTraversal(root);
 
-    cout<<endl;
-    root = deleteNode(root, 3);
-    LevelOrderTraversal(root);
-
-    root = deleteNode(root, 5);
-    LevelOrderTraversal(root);
-
-    root = deleteNode(root, 8);
-    LevelOrderTraversal(root);
+    cout<<"Min: "<<findMin(root)->data<<endl;    
+    cout<<"Min: "<<findMax(root)->data<<endl;    
 
     return 0;
 }
