@@ -70,13 +70,15 @@ void LevelOrderTraversal(node* root){
 
 void reverseLevelOrderTraversal(node* root){
 
-    queue<node*> q;
     stack<node*> s;
+    s.push(NULL);
+
+    queue<node*> q;
     q.push(root);
     q.push(NULL);
 
-    while (!q.empty()){
-        
+    while(!q.empty()){
+
         node* temp = q.front();
         s.push(q.front());
         q.pop();
@@ -87,25 +89,24 @@ void reverseLevelOrderTraversal(node* root){
             }
         }
         else{
-            if( temp->left){
-                q.push(temp -> left);
+
+            if(temp->left){
+                q.push(temp->left);
             }
-            if( temp->right){
-                q.push(temp -> right);
+            if(temp->right){
+                q.push(temp->right);
             }
         }
-    }
-    while (!s.empty()){
-        
+    }  
+    while(!s.empty()){
         node* temp = s.top();
-        
+        s.pop();
         if(temp == NULL){
             cout<<endl;
         }
         else{
             cout<<temp->data<<" ";
         }
-        s.pop();
     }
 
     
